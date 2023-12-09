@@ -1,9 +1,9 @@
-name: First Actions
+name: FirstActions
 on: push
 
 jobs:
   my-job:
-    name: My Job
+    name: My Tasks
     runs-on: ubuntu-latest
     steps:
     - name: Print a greeting

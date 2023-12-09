@@ -1,9 +1,9 @@
-name: Greeting from Mona
+name: FirstActions
 on: push
 
 jobs:
   my-job:
-    name: My Job
+    name: My Tasks
     runs-on: ubuntu-latest
     steps:
     - name: Print a greeting
@@ -14,3 +14,13 @@ jobs:
         LAST_NAME: Octocat
       run: |
         echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  my-job-2:
+    name: My Job 2
+    runs-on: ubuntu-latest
+    steps:
+    - name: 打印任务
+      env:
+        MY_VAR: 是否支持汉字
+        FIRST_NAME: Mocha
+      run: |
+        echo $MY_VAR $FIRST_NAME
