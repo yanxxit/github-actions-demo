@@ -1,0 +1,26 @@
+name: TwoActions
+on: push
+
+jobs:
+  build-job:
+    name: 编译任务
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print a greeting
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  deploy-job:
+    name: 部署任务
+    runs-on: ubuntu-latest
+    steps:
+    - name: 打印任务
+      env:
+        MY_VAR: 是否支持汉字
+        FIRST_NAME: Mocha
+      run: |
+        echo $MY_VAR $FIRST_NAME
