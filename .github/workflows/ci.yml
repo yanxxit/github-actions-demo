@@ -11,7 +11,7 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.SuperSecret }}
         run: |
-          example-command "$SUPER_SECRET"
+          echo "$SUPER_SECRET"
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
