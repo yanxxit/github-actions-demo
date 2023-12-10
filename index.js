@@ -1,5 +1,10 @@
 const fs = require("fs");
+const path = require("path");
 
-fs.writeFileSync('index.html',`
+if (!fs.existsSync("dist")) fs.mkdirSync("dist")
+
+
+let file_dir = path.join(__dirname, 'dist', 'index.html')
+fs.writeFileSync(file_dir, `
 <h2>hello world</h2>
 `)
