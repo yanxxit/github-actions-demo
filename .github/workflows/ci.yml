@@ -19,6 +19,7 @@ jobs:
         run: |
           npm run build
           ls dist/
+      # 部署到当前项目的gh-pages分支
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -30,6 +31,6 @@ jobs:
           bucket: yanxxit
           access-key: ${{ secrets.QINIU_ACCESS_KEY }}
           secret-key: ${{ secrets.QINIU_SECRET_KEY }}
-          base-folder: blog
+          base-folder: hexo-blog
           domain: "http://cdn.yxxit.com"
-          sub-domain: ""
+          sub-domain: "blog"
