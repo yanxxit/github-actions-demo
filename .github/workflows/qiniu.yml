@@ -1,0 +1,21 @@
+name: deploy hexo to qiniu
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+        path: master
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - uses: Hanlin-Dong/hexo-to-qiniu-action@v1
+      with:
+        bucket: yanxxit
+        access-key: ${{ secrets.QINIU_ACCESS_KEY }}
+        secret-key: ${{ secrets.QINIU_SECRET_KEY }}
+        base-folder: hexo-blog
+        domain: "http://cdn.yxxit.com"
+        sub-domain: "blog"
