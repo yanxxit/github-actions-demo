@@ -24,3 +24,12 @@ jobs:
         with:
           branch: gh-pages
           folder: dist # The folder the action should deploy.
+      - name: 部署到七牛
+        uses: Hanlin-Dong/hexo-to-qiniu-action@v1
+        with:
+          bucket: yanxxit
+          access-key: ${{ secrets.QINIU_ACCESS_KEY }}
+          secret-key: ${{ secrets.QINIU_SECRET_KEY }}
+          base-folder: blog
+          domain: "http://cdn.yxxit.com"
+          sub-domain: ""
