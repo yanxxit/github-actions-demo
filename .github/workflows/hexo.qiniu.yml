@@ -1,0 +1,37 @@
+name: Upload Website
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install and Build 🔧 
+      run: |
+        cd hexo-blog && npm i && npm run build && ls
+    - uses: hujiulong/action-qiniu-upload@master
+      with:
+        # Your qiniu access key, required.
+        access_key: ${{ secrets.QINIU_ACCESS_KEY }}
+
+        # Your qiniu secret key, required.
+        secret_key: ${{ secrets.QINIU_SECRET_KEY }}
+
+        # Bucket name, required. secrets.QINIU_BUCKET
+        bucket: yanxxit
+
+        # The local directory (or file) you want to upload to bucket.
+        # Default: './'
+        source_dir: './hexo-blog/public'
+
+        # The directory inside of the bucket you want to upload to, namely key prefix prepended to dest file key.
+        # Default: '/'
+        dest_dir: '/blog'
+
+        # Whether to ignore source maps.
+        # Default: true
+        ignore_source_map: true
